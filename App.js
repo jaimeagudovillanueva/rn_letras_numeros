@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Button } from 'react-native';
-import Coche from './components/matricula/coche';
+import Coche from './components/coche/coche';
 import Abecedario from './components/abecedario/abecedario';
 
 const App = () => {

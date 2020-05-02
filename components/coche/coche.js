@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
 import * as Speech from 'expo-speech';
 
@@ -6,8 +6,12 @@ import Matricula from './matricula';
 
 const coche = () => {
 
-    const [matricula, setMatricula] = useState([6, 3, 0, 0, ' ', 'F', 'N', 'R']);
+    const [matricula, setMatricula] = useState(null);
     const [isLeyendo, setIsLeyendo] = useState(false);
+
+    useEffect(() => {
+        cambiarMatriculaHandler();
+    }, [cambiarMatriculaHandler]);
 
     const leer = letra => {
         Speech.speak(letra.toString(), {
@@ -30,10 +34,10 @@ const coche = () => {
         return Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number;
     }
     
-    const cambiarMatriculaHandler = () => {
+    const cambiarMatriculaHandler = React.useCallback(() => {
         const matricula = Math.floor(Math.random() * 10000);
         setMatricula((padDigits(matricula, 4) + ' ' + randomWord(3)).split(''));
-    }
+    }, []);
 
     const leerMatricula = () => {
         const textoALeer = matricula.join(' ,');
@@ -52,7 +56,7 @@ const coche = () => {
                 }
             </View>
             <View style={styles.coche}>
-                <Matricula matricula={matricula} leer={leer} isLeyendo={isLeyendo} />
+                {matricula && <Matricula matricula={matricula} leer={leer} isLeyendo={isLeyendo} />}
             </View>
             <View style={styles.boton}>
                 <Button title="Cambiar matrícula" onPress={cambiarMatriculaHandler}/>
