@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "rn_letras_numeros",
-    "slug": "rn_letras_numeros",
+    "name": "Aprendiendo a leer",
+    "slug": "aprendiendo-leer",
+    "description": "Sencilla aplicación para que los niños de 4 o 5 años puedan practicar los números y las letras",
     "platforms": [
       "ios",
-      "android",
-      "web"
+      "android"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -18,11 +18,16 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
+      "bundleIdentifier": "jaimeagudovillanueva.aprendiendo-a-leer",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
+    },
+    "android": {
+      "package" : "jaimeagudovillanueva.aprendiendo_a_leer",
+      "versionCode": 1,
+      "permissions": []
     }
   }
 }
